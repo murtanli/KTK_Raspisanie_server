@@ -1,0 +1,44 @@
+version: '3.7'
+
+services:
+
+  web:
+    build:
+      context: ./backend
+    command: python /usr/src/backend/manage.py runserver 0.0.0.0:8100
+    volumes:
+      - ./backend:/usr/src/backend
+    ports:
+      - 8100:8100
+    depends_on:
+      - ktk_bot_db
+
+  ktk_bot:
+    build:
+      context: ./tele_bot
+    command: python /usr/src/tele_bot/bot.py
+    volumes:
+      - ./tele_bot:/usr/src/tele_bot
+    ports:
+      - 8050:8050
+    depends_on:
+      - ktk_bot_db
+
+  ktk_bot_db:
+      image: postgres
+      environment:
+        - POSTGRES_DB=ktk_bot_db_app
+        - POSTGRES_USER=ktkadminbd
+        - POSTGRES_PASSWORD=1234
+      container_name: ktk_bot_db
+      volumes:
+        - pgdbdata:/var/lib/postgresql
+  redis:
+    image: redis:7
+    container_name: redis
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--appendonly", "yes"]
+
+volumes:
+  pgdbdata:

@@ -1,0 +1,7 @@
+BOT_TOKEN = "7971141734:AAHiJPSrYnrLow0h0FTe6Anw7pd1gAChBJA"
+API_URL = "http://web:8100/api"
+DB_NAME = "ktk_bot_db_app"
+DB_USER = "ktkadminbd"
+DB_PASSWORD = "1234"
+DB_HOST = "ktk_bot_db"
+DB_PORT = "5432"
