@@ -284,3 +284,6 @@ def get_schedule(request):
         })
 
     return Response(result)
+
+
+
