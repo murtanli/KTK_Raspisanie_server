@@ -4,4 +4,5 @@
 /build/
 *.log
 *.env
-tele_bot/config.pyк
+tele_bot/config.py
+backend/backend/settings.py
